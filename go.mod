@@ -1,6 +1,6 @@
 module Flash_Sale
 
-go 1.19
+go 1.17
 
 require (
 	github.com/gin-gonic/gin v1.8.1
@@ -8,6 +8,7 @@ require (
 	github.com/jinzhu/gorm v1.9.16
 	github.com/natefinch/lumberjack v2.0.0+incompatible
 	github.com/robfig/cron v1.2.0
+	github.com/streadway/amqp v1.0.0
 	go.uber.org/zap v1.23.0
 )
 
