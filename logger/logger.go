@@ -1,6 +1,7 @@
 package logger
 
 import (
+	"fmt"
 	"github.com/natefinch/lumberjack"
 	"github.com/robfig/cron"
 	"go.uber.org/zap"
@@ -51,4 +52,22 @@ func getLogWriter(filepath string) zapcore.WriteSyncer {
 	})
 	c.Start()
 	return zapcore.AddSync(lumberJackLogger)
+}
+
+//Gorm框架Log
+var GormLog GormLogger
+
+type GormLogger struct{}
+
+func (GormLogger) Println(v ...interface{}) {
+	SLog.Info(fmt.Sprintf("SQL层操作： %v", v))
+}
+
+var GinLog GinLogger
+
+type GinLogger struct{}
+
+func (GinLogger) Write(p []byte) (n int, err error) {
+	SLog.Info(fmt.Sprintf("Gin ： %s", p))
+	return n, err
 }
