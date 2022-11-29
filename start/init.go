@@ -9,7 +9,7 @@ import (
 func Init() {
 	logger.Init("./log/Flash_Sale.log")
 	Banner()
-	driver.InitDb()
+	driver.InitDB()
 	driver.InitMQ()
 	router.InitRouter()
 }
